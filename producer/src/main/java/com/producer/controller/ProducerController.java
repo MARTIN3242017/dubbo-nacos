@@ -2,6 +2,7 @@ package com.producer.controller;
 
 import com.samh.service.producer.ProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -20,4 +21,9 @@ public class ProducerController {
         return producerService.returnName();
     }
 
+    @Scheduled(cron = "0/20 * * * * ?")
+    @GetMapping(value = "/conf")
+    public String conf() {
+        return producerService.returnNacosConf();
+    }
 }

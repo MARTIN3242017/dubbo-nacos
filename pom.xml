@@ -24,7 +24,7 @@
         <maven.compiler.target>8</maven.compiler.target>
         <java.ver11sion>1.8</java.ver11sion>
         <dubbo.version>2.7.8</dubbo.version>
-        <nacos.discovery.version>0.2.7</nacos.discovery.version>
+        <nacos.version>0.2.7</nacos.version>
     </properties>
 
     <dependencies>
@@ -49,7 +49,18 @@
         <dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>nacos-discovery-spring-boot-starter</artifactId>
-            <version>${nacos.discovery.version}</version>
+            <version>${nacos.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-client</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <!-- nacos作为配置中心 spring-boot版本不能高于2.3 -->
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>nacos-config-spring-boot-starter</artifactId>
+            <version>${nacos.version}</version>
         </dependency>
     </dependencies>
 

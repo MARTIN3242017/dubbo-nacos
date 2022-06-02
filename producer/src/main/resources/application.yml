@@ -12,11 +12,11 @@ dubbo:
   monitor:
     protocol: dubbo-registry
   registry:
-    address: nacos://localhost:8848 # 自己定义, 写自己的nacos的ip地址, 8848是默认端口 ;
-  config-center:
-    address: nacos://localhost:8848 # 自己定义, 写自己的nacos的ip地址, 8848是默认端口 ;
-  metadata-report:
-    address: nacos://localhost:8848 # 自己定义, 写自己的nacos的ip地址, 8848是默认端口 ;
+    address: nacos://${nacos.address} # 自己定义, 写自己的nacos的ip地址, 8848是默认端口 ;
+  #    config-center:
+  #      address: nacos://${nacos.address} # 自己定义, 写自己的nacos的ip地址, 8848是默认端口 ;
+  #    metadata-report:
+  #      address: nacos://${nacos.address} # 自己定义, 写自己的nacos的ip地址, 8848是默认端口 ;
   provider: # 具体参数含义, 查看官方文档
     threadpool: fixed
     threads: 10
@@ -29,9 +29,21 @@ dubbo:
 
 # nacos配置, 具体参数,参照官方文档
 nacos:
+  address: 127.0.0.1:8848
   discovery:
     register:
       healthy: false
       service-name: HelloService
       group-name: tom
-    server-addr: localhost:8848 # 自己定义, 写自己的nacos的ip地址, 8848是默认端口 ;
+    server-addr: ${nacos.address} # 自己定义, 写自己的nacos的ip地址, 8848是默认端口 ;
+    namespace: e79f96d8-7a29-416a-98b4-be7ac05fbb3e
+  config:
+    bootstrap:
+      enable: true  #开启配置预加载功能
+    server-addr: ${nacos.address}  #nacos-server地址
+    namespace: e79f96d8-7a29-416a-98b4-be7ac05fbb3e #命名空间 默认为public
+    data-ids: demo-dev.yml #多个配置可用“,”分隔
+    type: yaml  #固定为yaml类型配置
+    auto-refresh: true  #开启自动刷新
+    group: DEFAULT_GROUP #默认分组 DEFAULT_GROUP
+

@@ -10,7 +10,7 @@ nacos:
     register:
       healthy: false
     server-addr: localhost:8848
-    
+
 # 配置dubbo
 dubbo:
   application:
