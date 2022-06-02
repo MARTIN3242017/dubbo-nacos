@@ -1,0 +1,31 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: consumer
+
+# nacos配置
+nacos:
+  discovery:
+    register:
+      healthy: false
+    server-addr: localhost:8848
+
+# 配置dubbo
+dubbo:
+  application:
+    name: dubbo-consumer
+    id: dubbo-consumer
+  monitor:
+    protocol: dubbo-registry
+  registry:
+    address: nacos://localhost:8848
+  config-center:
+    address: nacos://localhost:8848
+  metadata-report:
+    address: nacos://localhost:8848
+  protocol:
+    name: dubbo
+    port: 28081 # 端口不能与dubbo-provider重复;
+  consumer:
+    check: false
