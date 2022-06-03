@@ -11,4 +11,3 @@ public class ConsumerApplication {
         SpringApplication.run(ConsumerApplication.class, args);
     }
 }
-
